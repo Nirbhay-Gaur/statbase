@@ -10,7 +10,9 @@ ipRouter.get(
     try {
       IpList.find({}, (err, results) => {
         if (err) {
-          res.status(500).send("Internal Server Error: Unable to fetch data");
+          res
+            .status(500)
+            .send("Internal Server Error: Unable to fetch data", err);
         } else if (results === null) {
           res.status(200).send("Nothing to display");
         } else {
