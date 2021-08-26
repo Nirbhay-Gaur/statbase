@@ -10,11 +10,7 @@ ipRouter.get(
     try {
       IpList.find({}, (err, results) => {
         if (err) {
-          res
-            .status(500)
-            .send("Internal Server Error: Unable to fetch data", err);
-        } else if (results === null) {
-          res.status(200).send("Nothing to display");
+          res.status(500).send("Internal Server Error: Unable to fetch data");
         } else {
           res.send(
             results.reduce((resMap, item) => {
@@ -25,9 +21,7 @@ ipRouter.get(
         }
       });
     } catch (error) {
-      res
-        .status(500)
-        .send("Internal Server Error: Unable to fetch data", error);
+      res.status(500).send("Internal Server Error: Unable to fetch data");
     }
   })
 );
@@ -48,7 +42,7 @@ ipRouter.post(
         res.status(200);
       });
     } catch (error) {
-      res.status(200).send("Updated Succesfully", error);
+      res.status(200).send("Updated Succesfully");
     }
   })
 );
