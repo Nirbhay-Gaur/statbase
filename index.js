@@ -1,6 +1,8 @@
 import express from "express";
 import ipRouter from "./routers/ip.js";
+import authRouter from "./routers/auth.js";
 import db from "./config/db/db.js";
+import path from "path";
 
 const app = express();
 
@@ -11,6 +13,10 @@ db();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const __dirname = path.resolve();
+
+app.use(express.static(path.join(__dirname, "static")));
+
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST");
@@ -20,9 +26,10 @@ app.use(function (req, res, next) {
 });
 
 app.use("/api/iplist", ipRouter);
+app.use("/api/login", authRouter);
 
 app.get("/", (req, res) => {
-  res.send("Hello Peter!");
+  res.redirect("/api/login");
 });
 
 const PORT = 3000;

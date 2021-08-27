@@ -1,12 +1,14 @@
 import express from "express";
 import eah from "express-async-handler";
+import { isAuth } from "../config/helper/helper.js";
 import IpList from "../models/ipListModel.js";
 
 const ipRouter = express.Router();
 
 ipRouter.get(
   "/",
-  eah(async (req, res) => {
+  isAuth,
+  eah((req, res) => {
     try {
       IpList.find({}, (err, results) => {
         if (err) {

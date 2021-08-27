@@ -1,0 +1,40 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+form {
+  margin-bottom: 0;
+}
+
+.z-9 {
+  z-index: 999;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.white-bg {
+  background-color: #fff;
+}
+
+.box {
+  padding: 3rem;
+  border-radius: 5%;
+}
