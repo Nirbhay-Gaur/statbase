@@ -24,7 +24,7 @@ authRouter.post(
       return res.status(422).send("Invalid Password");
     }
 
-    console.log(user, passwd);
+    //console.log(user, passwd);
     try {
       if (user === USER && passwd === PASSWD) {
         res.redirect("/api/iplist");

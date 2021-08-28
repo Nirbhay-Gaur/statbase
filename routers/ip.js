@@ -49,8 +49,13 @@ ipRouter.post(
   })
 );
 
-ipRouter.get("/lookup", (req, res) => {
-  res.send("https://json.geoiplookup.io/[ip_address]");
+ipRouter.get("/:ip", (req, res) => {
+  const ip = req.params.ip;
+  if (!ip && typeof ip !== "string") {
+    res.status(404).send("invalid IP address");
+  } else {
+    res.redirect(`https://json.geoiplookup.io/${ip}`);
+  }
 });
 
 export default ipRouter;
