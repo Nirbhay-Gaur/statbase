@@ -1,10 +1,7 @@
 import express from "express";
 import eah from "express-async-handler";
-import path from "path";
 
 const authRouter = express.Router();
-
-const __dirname = path.resolve();
 
 const USER = process.env.USER;
 const PASSWD = process.env.PASSWD;
