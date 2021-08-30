@@ -2,6 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background-color: #121212;
 }
 form {
   margin-bottom: 0;
@@ -37,4 +38,74 @@ form {
 .box {
   padding: 3rem;
   border-radius: 5%;
+}
+
+.card-div {
+  margin: 3rem auto !important;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  max-width: 400px;
+  height: 155px;
+  margin: 20px;
+  border-radius: 10px;
+  color: #fff;
+  background-color: #222222;
+  box-shadow: 0 9px 20px rgba(250, 250, 250, 0.08);
+}
+
+.card-green {
+  border-bottom: 5px solid #69f0ae;
+}
+
+.card-red {
+  border-bottom: 5px solid #ff5252;
+}
+
+.card-blue {
+  border-bottom: 5px solid #7c4dff;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 250px;
+}
+
+.card-title {
+  font-size: 2.5rem;
+  color: #a0a0a0;
+}
+
+.card-body {
+  font-size: 5rem;
+}
+
+.d-flex {
+  display: flex;
+}
+
+table {
+  width: 100%;
+  color: white;
+}
+
+th,
+td {
+  text-align: center !important;
+}
+
+.container-table {
+  width: 90%;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }

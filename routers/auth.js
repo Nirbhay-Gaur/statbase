@@ -10,7 +10,7 @@ const USER = process.env.USER;
 const PASSWD = process.env.PASSWD;
 
 authRouter.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "static/public", "login.html"));
+  res.render("login");
 });
 
 authRouter.post(

@@ -17,6 +17,8 @@ const __dirname = path.resolve();
 
 app.use(express.static(path.join(__dirname, "static")));
 
+app.set("view engine", "ejs");
+
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST");

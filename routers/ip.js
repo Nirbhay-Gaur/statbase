@@ -5,6 +5,19 @@ import IpList from "../models/ipListModel.js";
 
 const ipRouter = express.Router();
 
+// GET Route helper function
+const getCount = (results) => {
+  const data = {
+    totalFreq: 0,
+    uniqueFreq: results.length,
+  };
+  results.forEach((el) => {
+    data.totalFreq += el.freq;
+  });
+
+  return data;
+};
+
 ipRouter.get(
   "/",
   isAuth,
@@ -14,12 +27,16 @@ ipRouter.get(
         if (err) {
           res.status(500).send("Internal Server Error: Unable to fetch data");
         } else {
-          res.send(
-            results.reduce((resMap, item) => {
-              resMap[item.id] = item;
-              return resMap;
-            }, {})
-          );
+          // res.send(
+          //   results.reduce((resMap, item) => {
+          //     resMap[item.id] = item;
+          //     return resMap;
+          //   }, {})
+          // );
+          res.render("dashboard", {
+            counts: getCount(results),
+            results: results,
+          });
         }
       });
     } catch (error) {
@@ -28,7 +45,8 @@ ipRouter.get(
   })
 );
 
-// Note: In the below code updating data returns error. To work around, even if error occurs status will be 200 only
+// Note: In the below code updating data returns error.
+// To work around, even if error occurs status will be 200 only
 // Please fix this for security purposes.
 
 ipRouter.post(

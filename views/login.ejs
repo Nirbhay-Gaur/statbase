@@ -1,0 +1,36 @@
+<%- include("./partials/header") %>
+
+<link rel="stylesheet" href="../css/background.css" />
+
+<div class="background-container"></div>
+<div class="stars"></div>
+<div class="twinkling"></div>
+<div class="container z-9">
+  <div class="row center">
+    <div class="six columns white-bg box">
+      <div class="text-center">
+        <h1>StatBase</h1>
+      </div>
+      <div>
+        <form id="login" autocomplete="off">
+          <label htmlFor="user">User ID</label>
+          <input type="text" name="user" id="user" class="u-full-width" />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="passwd"
+            id="passwd"
+            class="u-full-width"
+          />
+          <div class="text-center mt-1">
+            <input type="submit" class="button mb-0" value="Enter" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/form.js"></script>
+
+<%- include("./partials/footer") %>

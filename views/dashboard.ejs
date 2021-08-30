@@ -1,0 +1,38 @@
+<%- include("./partials/header") %> <%- include("./partials/card") %>
+
+<div class="container-table">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>IP Address</th>
+        <th>IPv4/IPv6</th>
+        <th>Frequency</th>
+        <th>First Visited</th>
+        <th>Last Visited</th>
+        <th>Device</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% results.map((el, i) => { %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><a href="iplist/<%= el.ip %>"><%= el.ip %></a></td>
+        <td><%= el.ip.length > 15 ? "IPv6" : "IPv4" %></td>
+        <td><%= el.freq %></td>
+        <td>
+          <%= `${el.createdAt.toDateString()}
+          ${el.createdAt.toLocaleTimeString()}` %>
+        </td>
+        <td>
+          <%= `${el.updatedAt.toDateString()}
+          ${el.updatedAt.toLocaleTimeString()}` %>
+        </td>
+        <td><%= el.uag %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include("./partials/footer") %>
