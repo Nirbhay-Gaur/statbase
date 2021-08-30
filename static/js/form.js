@@ -2,8 +2,8 @@ const form = document.getElementById("login");
 
 const loginUser = async (event) => {
   event.preventDefault();
-  const user = document.getElementById("user").value;
-  const passwd = document.getElementById("passwd").value;
+  const user = document.getElementById("user").value.trim();
+  const passwd = document.getElementById("passwd").value.trim();
   try {
     const result = await fetch("/api/login", {
       method: "POST",

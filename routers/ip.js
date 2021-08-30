@@ -2,6 +2,7 @@ import express from "express";
 import eah from "express-async-handler";
 import { isAuth } from "../config/helper/helper.js";
 import IpList from "../models/ipListModel.js";
+import browserDetect from "../static/js/browserDetector.js";
 
 const ipRouter = express.Router();
 
@@ -23,22 +24,25 @@ ipRouter.get(
   isAuth,
   eah((req, res) => {
     try {
-      IpList.find({}, (err, results) => {
-        if (err) {
-          res.status(500).send("Internal Server Error: Unable to fetch data");
-        } else {
-          // res.send(
-          //   results.reduce((resMap, item) => {
-          //     resMap[item.id] = item;
-          //     return resMap;
-          //   }, {})
-          // );
-          res.render("dashboard", {
-            counts: getCount(results),
-            results: results,
-          });
-        }
-      });
+      IpList.find({})
+        .sort([["updatedAt", -1]])
+        .exec((err, results) => {
+          if (err) {
+            res.status(500).send("Internal Server Error: Unable to fetch data");
+          } else {
+            // res.send(
+            //   results.reduce((resMap, item) => {
+            //     resMap[item.id] = item;
+            //     return resMap;
+            //   }, {})
+            // );
+            res.render("dashboard", {
+              counts: getCount(results),
+              results: results,
+              utils: browserDetect,
+            });
+          }
+        });
     } catch (error) {
       res.status(500).send("Internal Server Error: Unable to fetch data");
     }
