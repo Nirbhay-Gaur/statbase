@@ -6,7 +6,6 @@
       <tr>
         <th>#</th>
         <th>IP Address</th>
-        <th>IPv4/IPv6</th>
         <th>Frequency</th>
         <th>First Visited</th>
         <th>Last Visited</th>
@@ -18,7 +17,6 @@
       <tr>
         <td><%= results.length - i %></td>
         <td><a href="iplist/<%= el.ip %>"><%= el.ip %></a></td>
-        <td><%= el.ip.length > 15 ? "IPv6" : "IPv4" %></td>
         <td><%= el.freq %></td>
         <td>
           <%= `${ el.createdAt.toDateString()} ${
